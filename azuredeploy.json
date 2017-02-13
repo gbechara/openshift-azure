@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -25,7 +25,6 @@
     },
     "masterDnsName": {
       "type": "string",
-      "defaultValue":13.81.252.193
       "minLength": 1,
       "metadata": {
         "description": "Globally unique DNS Name for the Openshift Master Webinterface."
