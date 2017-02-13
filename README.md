@@ -1,15 +1,15 @@
 This work is based on https://github.com/derdanu
 
-# RedHat Openshift 3.2 cluster on Azure
+# RedHat Openshift 3.4 cluster on Azure
 
-When creating the RedHat Openshift 3.2 cluster on Azure, you will need a SSH RSA key for access.
+When creating the RedHat Openshift 3.4 cluster on Azure, you will need a SSH RSA key for access.
 
 ## Create the cluster
 
-To have OpenShift Enterprise 3.2 running on Azure, you will have to
+To have OpenShift Enterprise 3.4 running on Azure, you will have to
 follow 2 steps.
 - First deploy the cluster with one of the following method.
-- Then use ansible to install OSE 3.2 ( in a word run the
+- Then use ansible to install OSE 3.4 ( in a word run the
 openshift-install.sh script.
 
 ### Create the cluster on the Azure Portal
