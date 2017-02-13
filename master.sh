@@ -49,7 +49,7 @@ deployment_type=openshift-enterprise
 
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 
-openshift_master_default_subdomain=${ROUTEREXTIP}.xip.io
+openshift_master_default_subdomain=${ROUTEREXTIP}.nip.io
 openshift_use_dnsmasq=False
 
 openshift_registry_selector="role=infra"
