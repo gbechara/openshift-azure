@@ -12,6 +12,8 @@ Deploying OpenShift Container Platform 3.4 on Azure is done following 2 easy ste
 
 ## Step 1 - Create the cluster on the Azure Portal 
 
+Click on Deploy to Azure then you will be redirected to your Azure account 
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fgbechara%2Fopenshift-azure%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
@@ -19,10 +21,24 @@ Deploying OpenShift Container Platform 3.4 on Azure is done following 2 easy ste
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
+Wait for the installation to be ready this will consist of having an infra node, one master and a number of nodes. Then go to the group that contains those machines and get the OPENSHIFT MASTER SSH command line for the next step. We will need to appen
+
 ## Step 2 - Install Openshift with Ansible
 
-On the OpenShift the topology you just created connect to the master machine using ssh.  Use first ssh-add so that 
-the SSH forwarding Agent would forward the necesssary information to the script that will then install openshift.
+On the OpenShift the topology you just created connect to the master machine using ssh.  Use first 
+
+```
+ssh-add 
+```
+so that the SSH forwarding Agent would forward the necesssary information to the script that will then install openshift.
+
+Then connect using your user name added to the ssh command line resulting from Step 1 : OPENSHIFT MASTER SSH, example
+
+```
+[username@localmabchine ~]$ ssh -A gabriel@52.236.242.244
+
+```
+Then on the master you will need to run this script
 
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
@@ -111,4 +127,3 @@ FIXME : add pv / pvc
 | openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
-------
