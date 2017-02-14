@@ -1,4 +1,4 @@
-This work is based on https://github.com/derdanu and https://github.com/WilliamRedHat/openshift-Azure
+This work is based on https://github.com/WilliamRedHat/openshift-Azure
 
 # RedHat Openshift 3.4 cluster on Azure
 
@@ -126,4 +126,3 @@ FIXME : add pv / pvc
 | openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
--
