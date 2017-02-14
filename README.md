@@ -21,18 +21,18 @@ Click on Deploy to Azure then you will be redirected to your Azure account
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
-Wait for the installation to be ready this will consist of having an infra node, one master and a number of nodes. Then go to the group that contains those machines and get the OPENSHIFT MASTER SSH command line for the next step. We will need to appen
+Wait for the installation to be ready this will consist of having one infra node, one master and a number of nodes. Then go to the group that contains those machines and get the "OPENSHIFT MASTER SSH" command line that you will need for the next step.
 
 ## Step 2 - Install Openshift with Ansible
 
-On the OpenShift the topology you just created connect to the master machine using ssh.  Use first 
+On the OpenShift the topology, you just created connect to the master machine using ssh.  Use first 
 
 ```
 ssh-add 
 ```
-so that the SSH forwarding Agent would forward the necesssary information to the script that will then install openshift.
+so that the SSH forwarding Agent will forward the necesssary data to the script that will then install openshift.
 
-Then connect using your user name added to the ssh command line resulting from Step 1 : OPENSHIFT MASTER SSH, example
+Then connect using your user name added to the ssh command line resulting from Step 1. Example
 
 ```
 [username@localmabchine ~]$ ssh -A gabriel@52.236.242.244
