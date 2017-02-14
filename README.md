@@ -35,7 +35,7 @@ so that the SSH forwarding Agent will forward the necesssary data to the script 
 Then connect using your user name added to the ssh command line resulting from Step 1. Example
 
 ```
-[username@localmabchine ~]$ ssh -A gabriel@52.236.242.244
+[username@localmachine ~]$ ssh -A gabriel@52.236.242.244
 
 ```
 Then on the master you will need to run this script
@@ -59,8 +59,8 @@ Use the knowledge base article : https://access.redhat.com/articles/1994463
 #### Use the Azure CLI
 ```
 
-[hoffmann@william ~]$ git clone https://github.com/WilliamRedHat/openshift-azure.git
-[hoffmann@william ~]$ cd ~/openshift-azure/
+[username@localmachine ~]$ git clone https://github.com/WilliamRedHat/openshift-azure.git
+[username@localmachine ~]$ cd ~/openshift-azure/
 ```
 
 Update the azuredeploy.parameters.json file with your parameters
@@ -68,10 +68,10 @@ Update the azuredeploy.parameters.json file with your parameters
 Create a resource group :
 
 ```
-  [hoffmann@william ~]$ azure config mode arm
-  [hoffmann@william ~]$ azure location list
-  [hoffmann@william ~]$ azure group create -n "RG-OSE32" -l "West US"
-  [hoffmann@william ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE32 dnsName
+  [username@localmachine ~]$ azure config mode arm
+  [username@localmachine ~]$ azure location list
+  [username@localmachine ~]$ azure group create -n "RG-OSE32" -l "West US"
+  [username@localmachine ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE32 dnsName
 
 ```
 The output of the previous commmand line contains the connection strings :
@@ -87,10 +87,9 @@ The output of the previous commmand line contains the connection strings :
 
 ```
 
-```
 ## Configure NFS storage
 FIXME : add pv / pvc
-```
+
 ```
 [adminUsername@infranode ~]$ sudo su -
 [adminUsername@infranode ~]$ yum install nfs-utils  rpcbind
@@ -127,3 +126,4 @@ FIXME : add pv / pvc
 | openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
+--
