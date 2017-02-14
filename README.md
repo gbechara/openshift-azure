@@ -28,7 +28,7 @@ Wait for the installation to be ready this will consist of having one infra node
 On the OpenShift the topology, you just created connect to the master machine using ssh.  Use first 
 
 ```
-ssh-add 
+[username@localmachine ~]$ ssh-add 
 ```
 so that the SSH forwarding Agent will forward the necesssary data to the script that will then install openshift.
 
