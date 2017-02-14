@@ -88,20 +88,21 @@ FIXME : add pv / pvc
 ------
 
 ## Parameters
+
 ### Input Parameters
 
 ```
-| Name          | Type          | Description                                      |   |
-| ------------- | ------------- | -------------                                    |   |
-| adminUsername | String        | Username for SSH Login and Openshift Webconsole  |   |
-| adminPassword | SecureString  | Password for the Openshift Webconsole            |   |
-| sshKeyData    | String        | Public SSH Key for the Virtual Machines          |   |
-| masterDnsName | String        | DNS Prefix for the Openshift Master / Webconsole |   |
-| numberOfNodes | Integer       | Number of Openshift Nodes to create              |   |
-| image         | String        | Operating System to use. RHEL or CentOs          |   |
-| rhnUser       | String        | Red Hat Network user id                          |   |
-| rhnPass       | SecureString  | Red Hat Network password                         |   |
-| rhnPool       | String        | Red Hat Network pool id                          |   |
+| Name          | Type          | Description                                      |
+| ------------- | ------------- | -------------------------------------------------|
+| adminUsername | String        | Username for SSH Login and Openshift Webconsole  |
+| adminPassword | SecureString  | Password for the Openshift Webconsole            |
+| sshKeyData    | String        | Public SSH Key for the Virtual Machines          |
+| masterDnsName | String        | DNS Prefix for the Openshift Master / Webconsole |
+| numberOfNodes | Integer       | Number of Openshift Nodes to create              |
+| image         | String        | Operating System to use. RHEL or CentOs          |
+| rhnUser       | String        | Red Hat Network user id                          |
+| rhnPass       | SecureString  | Red Hat Network password                         |
+| rhnPool       | String        | Red Hat Network pool id                          |
 
 ```
 ### Output Parameters
