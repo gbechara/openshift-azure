@@ -126,4 +126,4 @@ FIXME : add pv / pvc
 | openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
---
+-
