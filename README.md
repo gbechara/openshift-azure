@@ -1,4 +1,4 @@
-This work is based on https://github.com/derdanu
+This work is based on https://github.com/derdanu and https://github.com/WilliamRedHat/openshift-Azure
 
 # RedHat Openshift 3.4 cluster on Azure
 
@@ -25,6 +25,7 @@ the SSH Agentforwarding would forward the necesssary information to the script t
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
 
+```
 
 ### Create the cluster with powershell
 
