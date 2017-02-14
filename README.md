@@ -58,7 +58,7 @@ Create a resource group :
   [hoffmann@william ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE32 dnsName
 
 ```
-Note the output :
+The output of the previous commmand line contains the connection strings :
 
 ```
   data:    Outputs            :
@@ -70,10 +70,11 @@ Note the output :
   info:    group deployment create command OK
 
 ```
-```
 
+```
 ## Configure NFS storage
 FIXME : add pv / pvc
+```
 ```
 [adminUsername@infranode ~]$ sudo su -
 [adminUsername@infranode ~]$ yum install nfs-utils  rpcbind
@@ -85,13 +86,10 @@ FIXME : add pv / pvc
 [adminUsername@infranode ~]$ exportfs -r
 ```
 
-------
-
 ## Parameters
 
 ### Input Parameters
 
-```
 | Name          | Type          | Description                                      |
 | ------------- | ------------- | -------------------------------------------------|
 | adminUsername | String        | Username for SSH Login and Openshift Webconsole  |
@@ -104,15 +102,13 @@ FIXME : add pv / pvc
 | rhnPass       | SecureString  | Red Hat Network password                         |
 | rhnPool       | String        | Red Hat Network pool id                          |
 
-```
+
 ### Output Parameters
 
-```
 | Name| Type                 | Description  |
 | -------------------------- | ------------ | -------------------------------------------------------------------- |
 | openshift Webconsole       | String       | URL of the Openshift Webconsole                                      |
 | openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
-```
 ------
