@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "william"
+    },
+    "adminPassword": {
+      "value": "redhat123"
+    },
+    "sshKeyData": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCa/qaFUNrvNkray2dngm7D16ZOxY0DV4j/O9WrQ3EYq4xYwxnSrTUjNk4TMAcNPLSFRYMe5azkujaprY9he0OhXRzfCEDCu/5wgwTxGgzc1+de7eDmpTXDJqcMTjOpXCNkjAdM7XO9YYgn+ufhYxvtJ9hrdM3NcuGoDg8A37CS5Q== RSA-1024"
+    },
+    "masterDnsName": {
+      "value": "gbechara-002"
+    },
+    "numberOfNodes": {
+      "value": 3
+    },
+    "image": {
+      "value": "rhel"
+    },
+    "rhnUser": {
+      "value": "rh-gs-gbechara"
+    },
+    "rhnPass": {
+      "value": "changeme"
+    },
+    "rhnPool": {
+      "value": "8a85f9843e3d687a013e3ddd46dd07f1"
+    }
+  }
+}

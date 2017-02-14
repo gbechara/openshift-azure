@@ -4,13 +4,13 @@ This work is based on https://github.com/derdanu and https://github.com/WilliamR
 
 When creating the RedHat Openshift 3.4 cluster on Azure, you will need a SSH RSA key for access.
 
-## Create the cluster
+## Deploying OpenShift Container Platform 
 
-To have OpenShift Enterprise 3.4 running on Azure, you will have to follow 2 steps.
-- First deploy the cluster with one of the following method.
-- Then use ansible to install OSE 3.4 
+Deploying OpenShift Container Platform 3.4 on Azure is done following 2 easy steps :
+- Create the VMs to host an OpenShift installation
+- Use Ansible to install OpenShift Container Platform 3.4 
 
-### Create the cluster on the Azure Portal
+## Step 1 - Create the cluster on the Azure Portal 
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fgbechara%2Fopenshift-azure%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
@@ -19,20 +19,23 @@ To have OpenShift Enterprise 3.4 running on Azure, you will have to follow 2 ste
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
-after this step you need to install openshift of the topology you just created, so you will need to connect to the master using ssh-add so that 
-the SSH Agentforwarding would forward the necesssary information to the script that will install openshift.
+## Step 2 - Install Openshift with Ansible
+
+On the OpenShift the topology you just created connect to the master machine using ssh.  Use first ssh-add so that 
+the SSH forwarding Agent would forward the necesssary information to the script that will then install openshift.
 
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
 
 ```
+## Alternative methods to Step 1
 
-### Create the cluster with powershell
+### Alternative method 1 - Create the cluster with powershell
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <RessourceGroupName> -TemplateUri https://raw.githubusercontent.com/WilliamRedHat/openshift-azure/rhel/azuredeploy.json
 ```
-### Create the cluster with Azure CLI on RHEL 7.2
+### Alternative method 2 - Create the cluster with Azure CLI on RHEL 7.2
 
 #### Install Azure CLI
 Use the knowledge base article : https://access.redhat.com/articles/1994463
@@ -67,15 +70,6 @@ Note the output :
   info:    group deployment create command OK
 
 ```
-You're now able to go to the next step.
-
-## Install Openshift with Ansible
-
-You must use SSH Agentforwarding.
-You must register your systems into RHN and to add the proper channels.
-
-```
-[adminUsername@master ~]$ ./openshift-install.sh
 ```
 
 ## Configure NFS storage
