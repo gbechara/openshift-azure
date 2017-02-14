@@ -6,11 +6,9 @@ When creating the RedHat Openshift 3.4 cluster on Azure, you will need a SSH RSA
 
 ## Create the cluster
 
-To have OpenShift Enterprise 3.4 running on Azure, you will have to
-follow 2 steps.
+To have OpenShift Enterprise 3.4 running on Azure, you will have to follow 2 steps.
 - First deploy the cluster with one of the following method.
-- Then use ansible to install OSE 3.4 ( in a word run the
-openshift-install.sh script.
+- Then use ansible to install OSE 3.4 
 
 ### Create the cluster on the Azure Portal
 
@@ -20,6 +18,13 @@ openshift-install.sh script.
 <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FWilliamRedHat%2Fopenshift-azure%2Frhel%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
+
+after this step you need to install openshift of the topology you just created, so you will need to connect to the master using ssh-add so that 
+the SSH Agentforwarding would forward the necesssary information to the script that will install openshift.
+
+```
+[adminUsername@master ~]$ ./openshift-install.sh
+
 
 ### Create the cluster with powershell
 
@@ -99,18 +104,18 @@ FIXME : add pv / pvc
 | masterDnsName | String        | DNS Prefix for the Openshift Master / Webconsole |   |
 | numberOfNodes | Integer       | Number of Openshift Nodes to create              |   |
 | image         | String        | Operating System to use. RHEL or CentOs          |   |
-| rhnUser      | String        | Red Hat Network user id                          |   |
-| rhnPass      | SecureString  | Red Hat Network password                         |   |
-| rhnPool      | String        | Red Hat Network pool id                          |   |
+| rhnUser       | String        | Red Hat Network user id                          |   |
+| rhnPass       | SecureString  | Red Hat Network password                         |   |
+| rhnPool       | String        | Red Hat Network pool id                          |   |
 
 ```
 ### Output Parameters
 
 ```
-| Name| Type           | Description |
-| ------------- | ------------- | ------------- |
-| openshift Webconsole | String       | URL of the Openshift Webconsole |
-| openshift Master ssh |String | SSH String to Login at the Master |
+| Name| Type                 | Description  |
+| -------------------------- | ------------ | -------------------------------------------------------------------- |
+| openshift Webconsole       | String       | URL of the Openshift Webconsole                                      |
+| openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
 ```
