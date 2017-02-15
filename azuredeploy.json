@@ -7,13 +7,13 @@
       "defaultValue": "gabriel",
       "minLength": 1,
       "metadata": {
-        "description": "User name for the Virtual Machine and Openshift Webconsole."
+        "description": "User name for the Virtual Machines."
       }
     },
     "adminPassword": {
       "type": "securestring",
       "metadata": {
-        "description": "User password for the Openshift Webconsole"
+        "description": "User password for the Virtual Machines."
       }
     },
     "sshKeyData": {
@@ -76,6 +76,7 @@
     "baseVMachineTemplateUriInfranode": "[concat(variables('baseTemplateUrl'), 'infranode.json')]",
     "baseVMachineTemplateUriNode": "[concat(variables('baseTemplateUrl'), 'node.json')]",
     "baseVMachineTemplateUriMaster": "[concat(variables('baseTemplateUrl'), 'master.json')]",
+    "baseVMachineTemplateUriUtils": "[concat(variables('baseTemplateUrl'), 'utils.json')]",
     "location": "[resourceGroup().location]",
     "virtualNetworkName": "openshiftVnet",
     "addressPrefix": "10.0.0.0/16",
@@ -85,10 +86,13 @@
     "nodesubnetPrefix": "10.0.1.0/24",
     "mastersubnetName": "masterSubnet",
     "mastersubnetPrefix": "10.0.0.0/24",
+    "utilssubnetName": "utilsSubnet",
+    "utilssubnetPrefix": "10.0.4.0/24",
     "apiVersion": "2015-06-15",
     "infranodeStorageName": "[concat(uniqueString(resourceGroup().id), 'infranodesa')]",
     "nodeStorageName": "[concat(uniqueString(resourceGroup().id), 'nodesa')]",
     "masterStorageName": "[concat(uniqueString(resourceGroup().id), 'mastersa')]",
+    "utilsStorageName": "[concat(uniqueString(resourceGroup().id), 'utilssa')]",
     "vhdStorageType": "Standard_LRS",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "infranodeSubnetRef": "[concat(variables('vnetId'), '/subnets/', variables('infranodesubnetName'))]",
@@ -97,6 +101,7 @@
     "infranodeVMSize": "Standard_D2_v2",
     "nodeVMSize": "Standard_D2_v2",
     "masterVMSize": "Standard_D3_v2",
+    "utilsVMSize": "Standard_D3_v2",
     "centos": {
       "publisher": "Openlogic",
       "offer": "CentOS",
@@ -148,6 +153,18 @@
       }
     },
     {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('utilsStorageName')]",
+      "apiVersion": "[variables('apiVersion')]",
+      "location": "[variables('location')]",
+      "tags": {
+        "displayName": "StorageAccount"
+      },
+      "properties": {
+        "accountType": "[variables('vhdStorageType')]"
+      }
+    },
+    {
       "apiVersion": "[variables('apiVersion')]",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[variables('virtualNetworkName')]",
@@ -179,7 +196,14 @@
             "properties": {
               "addressPrefix": "[variables('mastersubnetPrefix')]"
             }
+          },
+          {
+            "name": "[variables('utilssubnetName')]",
+            "properties": {
+              "addressPrefix": "[variables('utilssubnetPrefix')]"
+            }
           }
+
         ]
       }
     },
@@ -328,6 +352,57 @@
           },
           "vmSize": {
             "value": "[variables('infranodeVMSize')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "sshKeyData": {
+            "value": "[parameters('sshKeyData')]"
+          },
+          "baseTemplateUrl": {
+            "value": "[variables('baseTemplateUrl')]"
+          },
+          "rhnUser": {
+            "value": "[parameters('rhnUser')]"
+          },
+          "rhnPass": {
+            "value": "[parameters('rhnPass')]"
+          },
+          "rhnPool": {
+            "value": "[parameters('rhnPool')]"
+          },
+          "imageReference": {
+            "value": "[variables(parameters('image'))]"
+          }
+        }
+      }
+    },
+    {
+      "name": "utils",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('utilsStorageName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('baseVMachineTemplateUriUtils')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vmName": {
+            "value": "utils"
+          },
+          "sa": {
+            "value": "[variables('utilsStorageName')]"
+          },
+          "subnetRef": {
+            "value": "[variables('utilsSubnetRef')]"
+          },
+          "vmSize": {
+            "value": "[variables('utilsVMSize')]"
           },
           "adminUsername": {
             "value": "[parameters('adminUsername')]"
