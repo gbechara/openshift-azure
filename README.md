@@ -44,6 +44,21 @@ Then on the master you will need to run this script
 [adminUsername@master ~]$ ./openshift-install.sh
 
 ```
+
+## Step 3 - Usage
+
+User console of OpenShift is available on the master FQDN that will be constructed based on "Master Dns Name" param
+```
+http://MASTERDNSNAME.westeurope.cloudapp.azure.com:8443/console/
+```
+
+GitLab and nexus is available on the Utils FQDN that will be constructed based on "Utils Dns Name" param
+```
+http://UTILSDNSNAME.westeurope.cloudapp.azure.com
+http://UTILSDNSNAME.westeurope.cloudapp.azure.com:8081/nexus
+```
+
+
 ## Alternative methods to Step 1
 
 ### Alternative method 1 - Create the cluster with powershell
@@ -111,6 +126,7 @@ FIXME : add pv / pvc
 | adminPassword | SecureString  | Password for the Openshift Webconsole            |
 | sshKeyData    | String        | Public SSH Key for the Virtual Machines          |
 | masterDnsName | String        | DNS Prefix for the Openshift Master / Webconsole |
+| utilsDnsName  | String        | DNS Prefix for the Utilities GitLab and Nexus    |
 | numberOfNodes | Integer       | Number of Openshift Nodes to create              |
 | image         | String        | Operating System to use. RHEL or CentOs          |
 | rhnUser       | String        | Red Hat Network user id                          |
