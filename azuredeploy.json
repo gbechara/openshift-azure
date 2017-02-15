@@ -439,6 +439,14 @@
       "type": "string",
       "value": "[concat('ssh -A ', reference('master').outputs.pip.value)]"
     },
+    "Utils": {
+      "type": "string",
+      "value": "[concat('https://', reference('utils').outputs.fqdn.value, ':8080')]"
+    },
+    "Utils ssh": {
+      "type": "string",
+      "value": "[concat('ssh -A ', reference('utils').outputs.pip.value)]"
+    },
     "Openshift Router Public IP": {
       "type": "string",
       "value": "[reference('infranode').outputs.pip.value]"

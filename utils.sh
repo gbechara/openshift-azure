@@ -26,3 +26,33 @@ EOF
 
 docker-storage-setup
 systemctl enable docker
+
+systemctl start docker
+
+mkdir /srv/gitlab
+mkdir /srv/gitlab/data
+mkdir /srv/gitlab/config
+mkdir /srv/gitlab/logs
+
+docker run --detach \
+--hostname gitlab.example.com \
+--publish 443:443 --publish 80:80 --publish 8022:22 \
+--name gitlab \
+--restart always \
+--volume /srv/gitlab/config:/etc/gitlab:Z \
+--volume /srv/gitlab/logs:/var/log/gitlab:Z \
+--volume /srv/gitlab/data:/var/opt/gitlab:Z \
+gitlab/gitlab-ce:latest
+
+
+mkdir /srv/nexus-data
+
+docker run --detach \
+--hostname ose-utils.example.com \
+--publish 8081:8081 \
+--name nexus \
+--restart always \
+--volume /srv/nexus-data:/sonatype-work:Z \
+--user root \
+sonatype/nexus
+
