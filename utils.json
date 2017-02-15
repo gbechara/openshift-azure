@@ -5,6 +5,9 @@
     "vmName": {
       "type": "string"
     },
+    "dnsName": {
+      "type": "string"
+    },
     "sa": {
       "type": "string"
     },
@@ -164,7 +167,7 @@
         "typeHandlerVersion": "1.3",
         "settings": {
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'utils.sh')]" ],
-          "commandToExecute": "[concat('sh utils.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
+          "commandToExecute": "[concat('sh utils.sh ', ' ', reference(concat(parameters('vmName'),'pip')).dnsSettings.fqdn, parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
         }
       }
     },
@@ -216,7 +219,10 @@
         "displayName": "PublicIPAddress"
       },
       "properties": {
-        "publicIPAllocationMethod": "Static"
+        "publicIPAllocationMethod": "Static",
+        "dnsSettings": {
+          "domainNameLabel": "[parameters('dnsName')]"
+        }
       }
     }
   ],
