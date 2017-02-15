@@ -47,12 +47,12 @@ Then on the master you will need to run this script
 
 ## Step 3 - Usage
 
-User console of OpenShift is available on the master FQDN that will be constructed based on "Master Dns Name" param
+User console of OpenShift is available on the master FQDN that will be constructed based on "Master Dns Name" param, example :
 ```
 http://MASTERDNSNAME.westeurope.cloudapp.azure.com:8443/console/
 ```
 
-GitLab and nexus is available on the Utils FQDN that will be constructed based on "Utils Dns Name" param
+GitLab and nexus is available on the Utils FQDN that will be constructed based on "Utils Dns Name" param, example :
 ```
 http://UTILSDNSNAME.westeurope.cloudapp.azure.com
 http://UTILSDNSNAME.westeurope.cloudapp.azure.com:8081/nexus
