@@ -271,70 +271,6 @@
       }
     },
     {
-      "name": "master",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2015-01-01",
-      "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
-        "[concat('Microsoft.Storage/storageAccounts/', variables('masterStorageName'))]",
-        "[resourceId('Microsoft.Resources/deployments', 'infranode')]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[variables('baseVMachineTemplateUriMaster')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "vmName": {
-            "value": "master"
-          },
-          "dnsName": {
-            "value": "[parameters('masterDNSName')]"
-          },
-          "sa": {
-            "value": "[variables('masterStorageName')]"
-          },
-          "subnetRef": {
-            "value": "[variables('masterSubnetRef')]"
-          },
-          "vmSize": {
-            "value": "[variables('masterVMSize')]"
-          },
-          "adminUsername": {
-            "value": "[parameters('adminUsername')]"
-          },
-          "adminPassword": {
-            "value": "[parameters('adminPassword')]"
-          },
-          "sshKeyData": {
-            "value": "[parameters('sshKeyData')]"
-          },
-          "numberOfNodes": {
-            "value": "[parameters('numberOfNodes')]"
-          },
-          "baseTemplateUrl": {
-            "value": "[variables('baseTemplateUrl')]"
-          },
-          "rhnUser": {
-            "value": "[parameters('rhnUser')]"
-          },
-          "rhnPass": {
-            "value": "[parameters('rhnPass')]"
-          },
-          "rhnPool": {
-            "value": "[parameters('rhnPool')]"
-          },
-          "routerExtIP": {
-            "value": "[reference('infranode').outputs.pip.value]"
-          },
-          "imageReference": {
-            "value": "[variables(parameters('image'))]"
-          }
-        }
-      }
-    },
-    {
       "name": "infranode",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
@@ -432,6 +368,70 @@
           },
           "rhnPool": {
             "value": "[parameters('rhnPool')]"
+          },
+          "imageReference": {
+            "value": "[variables(parameters('image'))]"
+          }
+        }
+      }
+    },
+    {
+      "name": "master",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('masterStorageName'))]",
+        "[resourceId('Microsoft.Resources/deployments', 'infranode')]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('baseVMachineTemplateUriMaster')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vmName": {
+            "value": "master"
+          },
+          "dnsName": {
+            "value": "[parameters('masterDNSName')]"
+          },
+          "sa": {
+            "value": "[variables('masterStorageName')]"
+          },
+          "subnetRef": {
+            "value": "[variables('masterSubnetRef')]"
+          },
+          "vmSize": {
+            "value": "[variables('masterVMSize')]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "sshKeyData": {
+            "value": "[parameters('sshKeyData')]"
+          },
+          "numberOfNodes": {
+            "value": "[parameters('numberOfNodes')]"
+          },
+          "baseTemplateUrl": {
+            "value": "[variables('baseTemplateUrl')]"
+          },
+          "rhnUser": {
+            "value": "[parameters('rhnUser')]"
+          },
+          "rhnPass": {
+            "value": "[parameters('rhnPass')]"
+          },
+          "rhnPool": {
+            "value": "[parameters('rhnPool')]"
+          },
+          "routerExtIP": {
+            "value": "[reference('infranode').outputs.pip.value]"
           },
           "imageReference": {
             "value": "[variables(parameters('image'))]"

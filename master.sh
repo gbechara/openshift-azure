@@ -104,4 +104,4 @@ EOF
 
 chmod 755 /home/${USERNAME}/openshift-install.sh
 
-./openshift-install.sh
+sh /home/${USERNAME}/openshift-install.sh
