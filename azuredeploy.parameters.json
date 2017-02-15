@@ -12,6 +12,9 @@
       "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCa/qaFUNrvNkray2dngm7D16ZOxY0DV4j/O9WrQ3EYq4xYwxnSrTUjNk4TMAcNPLSFRYMe5azkujaprY9he0OhXRzfCEDCu/5wgwTxGgzc1+de7eDmpTXDJqcMTjOpXCNkjAdM7XO9YYgn+ufhYxvtJ9hrdM3NcuGoDg8A37CS5Q== RSA-1024"
     },
     "masterDnsName": {
+      "value": "gbechara-001"
+    },
+    "utilsDnsName": {
       "value": "gbechara-002"
     },
     "numberOfNodes": {

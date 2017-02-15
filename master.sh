@@ -87,7 +87,7 @@ openshift_registry_selector='region=infra'
 # openshift_hosted_registry_storage_volume_size=5Gi
 
 [masters]
-master openshift_node_labels="{'region': 'infra', 'zone': 'default'}"  openshift_public_hostname=${HOSTNAME}
+master openshift_node_labels="{'region': 'master', 'zone': 'default'}"  openshift_public_hostname=${HOSTNAME}
 
 
 [nodes]
