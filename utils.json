@@ -64,6 +64,10 @@
       "tags": {
         "displayName": "NetworkInterface"
       },
+      "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/', concat(parameters('vmName'), 'pip'))]",
+        "[concat('Microsoft.Network/networkSecurityGroups/', concat(parameters('vmName'), 'nsg'))]"
+      ],
       "properties": {
         "ipConfigurations": [
           {
@@ -162,6 +166,18 @@
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'utils.sh')]" ],
           "commandToExecute": "[concat('sh utils.sh ', parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
         }
+      }
+    },
+    {
+      "apiVersion": "[variables('apiVersion')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[concat(parameters('vmName'), 'pip')]",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "PublicIPAddress"
+      },
+      "properties": {
+        "publicIPAllocationMethod": "Static"
       }
     }
   ],
