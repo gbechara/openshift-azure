@@ -35,6 +35,8 @@ docker-storage-setup
 systemctl enable docker
 systemctl start docker
 
+systemctl stop firewalld
+systemctl disable firewalld
 
 cat <<EOF > /etc/ansible/hosts
 [OSEv3:children]
@@ -206,4 +208,5 @@ chmod 755 /home/${USERNAME}/create_pvs.sh
 
 # sh /home/${USERNAME}/openshift-install.sh
 # sh /home/${USERNAME}/create_pvs.sh
+
 

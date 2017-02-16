@@ -95,3 +95,6 @@ systemctl start rpcbind
 systemctl start nfs-server
 systemctl enable rpcbind
 systemctl enable nfs-server
+
+systemctl stop firewalld
+systemctl disable firewalld
