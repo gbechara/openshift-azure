@@ -104,4 +104,5 @@ EOF
 
 chmod 755 /home/${USERNAME}/openshift-install.sh
 
-sh /home/${USERNAME}/openshift-install.sh
+# time out ? 
+# sh /home/${USERNAME}/openshift-install.sh
