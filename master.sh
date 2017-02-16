@@ -187,7 +187,7 @@ done
 # sh /home/${USERNAME}/openshift-install.sh
 
 
-cat <<EOF > /home/${USERNAME}/create_pvs.json
+cat <<EOF > /home/${USERNAME}/create_pvs.sh
 n=1
 while [ $n -le 9 ]
 do
@@ -203,5 +203,5 @@ done
 EOF
 
 # sh /home/${USERNAME}/openshift-install.sh
-# sh /home/${USERNAME}/create_pvs.json
+# sh /home/${USERNAME}/create_pvs.sh
 
