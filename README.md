@@ -42,6 +42,10 @@ Then on the master you will need to run this script
 
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
+[adminUsername@master ~]$ oc create -f pv0001.sh
+[adminUsername@master ~]$ n=1 while [ $n -le 9 ] do oc create -f pv000$n.json (( n++ )) done
+[adminUsername@master ~]$ n=10 while [ $n -le 20 ] do oc create -f pv00$n.json (( n++ )) done
+
 
 ```
 

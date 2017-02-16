@@ -157,7 +157,7 @@ EOF
 done
 
 n=16
-while [ $n -le 19 ]
+while [ $n -le 20 ]
 do
 cat <<EOF > /home/${USERNAME}/pv00$n.json
 {
@@ -182,6 +182,26 @@ EOF
 (( n++ ))
 done
 
+
 # time out ?
 # sh /home/${USERNAME}/openshift-install.sh
-# oc /home/${USERNAME}/openshift-install.sh
+
+
+cat <<EOF > /home/${USERNAME}/create_pvs.json
+n=1
+while [ $n -le 9 ]
+do
+  oc create -f pv000$n.json
+  (( n++ ))
+done
+n=10
+while [ $n -le 20 ]
+do
+oc create -f pv00$n.json
+(( n++ ))
+done
+EOF
+
+# sh /home/${USERNAME}/openshift-install.sh
+# sh /home/${USERNAME}/create_pvs.json
+
