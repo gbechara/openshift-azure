@@ -104,5 +104,84 @@ EOF
 
 chmod 755 /home/${USERNAME}/openshift-install.sh
 
-# time out ? 
+n=1
+while [ $n -le 9 ]
+do
+cat <<EOF > /home/${USERNAME}/pv000$n.json
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "pv000$n"
+  },
+  "spec": {
+    "capacity": {
+        "storage": "1Gi"
+    },
+    "accessModes": [ "ReadWriteOnce", "ReadWriteMany" ],
+    "nfs": {
+        "path": "/opt/nfs/pv000$n",
+        "server": "utils"
+    },
+    "persistentVolumeReclaimPolicy": "Recycle"
+  }
+}
+EOF
+(( n++ ))
+done
+
+n=10
+while [ $n -le 15 ]
+do
+cat <<EOF > /home/${USERNAME}/pv00$n.json
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "pv00$n"
+  },
+  "spec": {
+    "capacity": {
+        "storage": "5Gi"
+    },
+    "accessModes": [ "ReadWriteOnce", "ReadWriteMany" ],
+    "nfs": {
+        "path": "/opt/nfs/pv00$n",
+        "server": "utils"
+    },
+    "persistentVolumeReclaimPolicy": "Recycle"
+  }
+}
+EOF
+(( n++ ))
+done
+
+n=16
+while [ $n -le 19 ]
+do
+cat <<EOF > /home/${USERNAME}/pv00$n.json
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "pv00$n"
+  },
+  "spec": {
+    "capacity": {
+        "storage": "25Gi"
+    },
+    "accessModes": [ "ReadWriteOnce", "ReadWriteMany" ],
+    "nfs": {
+        "path": "/opt/nfs/pv00$n",
+        "server": "utils"
+    },
+    "persistentVolumeReclaimPolicy": "Recycle"
+  }
+}
+EOF
+(( n++ ))
+done
+
+# time out ?
 # sh /home/${USERNAME}/openshift-install.sh
+# oc /home/${USERNAME}/openshift-install.sh

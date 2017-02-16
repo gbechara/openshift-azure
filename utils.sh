@@ -56,3 +56,42 @@ docker run --detach \
 --user root \
 sonatype/nexus
 
+yum -y install nfs-utils rpcbind
+mkdir /opt/nfs
+mkdir /opt/nfs/pv0001
+mkdir /opt/nfs/pv0002
+mkdir /opt/nfs/pv0003
+mkdir /opt/nfs/pv0004
+mkdir /opt/nfs/pv0005
+mkdir /opt/nfs/pv0006
+mkdir /opt/nfs/pv0007
+mkdir /opt/nfs/pv0008
+mkdir /opt/nfs/pv0009
+mkdir /opt/nfs/pv0010
+mkdir /opt/nfs/pv0011
+mkdir /opt/nfs/pv0012
+mkdir /opt/nfs/pv0013
+mkdir /opt/nfs/pv0014
+mkdir /opt/nfs/pv0015
+mkdir /opt/nfs/pv0016
+mkdir /opt/nfs/pv0017
+mkdir /opt/nfs/pv0018
+mkdir /opt/nfs/pv0019
+mkdir /opt/nfs/pv0020
+
+
+chown -R nfsnobody:nfsnobody /opt/nfs
+chmod -R 0775 /opt/nfs
+
+
+cat <<EOF > /etc/exports
+/opt/nfs node01(rw,root_squash,no_wdelay)
+/opt/nfs node02(rw,root_squash,no_wdelay)
+/opt/nfs node03(rw,root_squash,no_wdelay)
+EOF
+
+chmod 644 /etc/exports
+systemctl start rpcbind
+systemctl start nfs-server
+systemctl enable rpcbind
+systemctl enable nfs-server
