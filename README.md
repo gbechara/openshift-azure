@@ -42,8 +42,14 @@ Then on the master you will need to run this script
 
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
+```
+
+To created Persitent Volumes you need to log in to be an OpenShift admin then you can do
+
+```
 [adminUsername@master ~]$ ./create_pvs.sh
 ```
+
 
 ## Step 3 - Usage
 
