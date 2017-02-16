@@ -38,13 +38,13 @@ Then connect using your user name added to the ssh command line resulting from S
 [username@localmachine ~]$ ssh -A gabriel@52.236.242.244
 
 ```
-Then on the master you will need to run this script
+Then on the master you will need to run this script :
 
 ```
 [adminUsername@master ~]$ ./openshift-install.sh
 ```
 
-To created Persitent Volumes you need to log in to be an OpenShift admin then you can do
+For applications that need Persitent Volumes you will need to log in as an OpenShift admin and run this script :
 
 ```
 [adminUsername@master ~]$ ./create_pvs.sh
