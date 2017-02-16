@@ -78,8 +78,8 @@ New-AzureRmResourceGroupDeployment -Name <DeploymentName> -ResourceGroupName <Re
 Use the knowledge base article : https://access.redhat.com/articles/1994463
 
 #### Use the Azure CLI
-```
 
+```
 [username@localmachine ~]$ git clone https://github.com/WilliamRedHat/openshift-azure.git
 [username@localmachine ~]$ cd ~/openshift-azure/
 ```
@@ -93,7 +93,6 @@ Create a resource group :
   [username@localmachine ~]$ azure location list
   [username@localmachine ~]$ azure group create -n "RG-OSE32" -l "West US"
   [username@localmachine ~]$ azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json RG-OSE32 dnsName
-
 ```
 The output of the previous commmand line contains the connection strings :
 
@@ -105,9 +104,6 @@ The output of the previous commmand line contains the connection strings :
   data:    openshift Master ssh        String  ssh -A 13.91.51.205                         
   data:    openshift Router Public IP  String  13.91.101.166                               
   info:    group deployment create command OK
-
-```
-
 ```
 
 ## Parameters
