@@ -102,18 +102,6 @@ The output of the previous commmand line contains the connection strings :
 
 ```
 
-## Configure NFS storage
-FIXME : add pv / pvc
-
-```
-[adminUsername@infranode ~]$ sudo su -
-[adminUsername@infranode ~]$ yum install nfs-utils  rpcbind
-[adminUsername@infranode ~]$ systemctl enable nfs-server
-[adminUsername@infranode ~]$ systemctl enable rpcbind
-[adminUsername@infranode ~]$ mkdir /exports
-[adminUsername@infranode ~]$ vim /etc/exports
-[adminUsername@infranode ~]$ systemctl start nfs-server
-[adminUsername@infranode ~]$ exportfs -r
 ```
 
 ## Parameters
