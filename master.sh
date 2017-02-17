@@ -60,6 +60,7 @@ openshift_router_selector="role=infra"
 
 # Install the openshift examples
 openshift_install_examples=true
+openshift_hosted_metrics_deploy=true
 
 # Enable cluster metrics
 use_cluster_metrics=true
@@ -208,5 +209,18 @@ chmod 755 /home/${USERNAME}/create_pvs.sh
 
 # sh /home/${USERNAME}/openshift-install.sh
 # sh /home/${USERNAME}/create_pvs.sh
+
+#cat <<EOF > /home/${USERNAME}/install_metrics.sh
+#git clone https://github.com/gbechara/osedevops.git
+#cp /home/${USERNAME}/osedevops/ansible/roles/metrics/files/metrics-* .
+#oc create -n openshift-infra -f metrics-service-account.yaml
+#oadm policy add-role-to-user edit system:serviceaccount:openshift-infra:metrics-deployer -n openshift-infra
+#oadm policy add-cluster-role-to-user cluster-reader system:serviceaccount:openshift-infra:heapster -n openshift-infra
+#oc adm policy add-role-to-user view system:serviceaccount:openshift-infra:hawkular -n openshift-infra
+#oc secrets new metrics-deployer nothing=/dev/null -n openshift-infra
+#oc process -f  metrics-deployer.yaml -v HAWKULAR_METRICS_HOSTNAME=hawkular-metrics.example.com -v USE_PERSISTENT_STORAGE=false  | oc create -n openshift-infra -f -
+#EOF
+#
+#chmod 755 /home/${USERNAME}/install_metrics.sh
 
 
