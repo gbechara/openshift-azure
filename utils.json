@@ -167,7 +167,7 @@
         "typeHandlerVersion": "1.3",
         "settings": {
           "fileUris": [ "[concat(parameters('baseTemplateUrl'), 'utils.sh')]" ],
-          "commandToExecute": "[concat('sh utils.sh ', ' ', reference(concat(parameters('vmName'),'pip')).dnsSettings.fqdn, parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
+          "commandToExecute": "[concat('sh utils.sh ', ' ', reference(concat(parameters('vmName'),'pip')).dnsSettings.fqdn, ' ',parameters('rhnUser'), ' ', parameters('rhnPass'), ' ', parameters('rhnPool'))]"
         }
       }
     },

@@ -14,7 +14,7 @@ rhn_pool=$8
 subscription-manager register --username=${rhn_username} --password=${rhn_pass} --force
 subscription-manager attach --pool=${rhn_pool}
 
-subscription-manager repos --disable='*'
+subscription-manager repos --disable="*"
 subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.4-rpms"
 
 sed -i -e 's/sslverify=1/sslverify=0/' /etc/yum.repos.d/rh-cloud.repo
