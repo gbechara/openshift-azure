@@ -132,3 +132,11 @@ The output of the previous commmand line contains the connection strings :
 | openshift Master ssh       | String       | SSH String to Login at the Master                                    |
 | openshift Router Public IP | String       | Router Public IP. Needed if you want to create your own Wildcard DNS |
 
+
+### Azure logs when applying scripts 
+cat /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.2/CommandExecution.log
+cat /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.2/extension.log
+
+
+
+
