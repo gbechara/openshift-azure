@@ -1,8 +1,9 @@
 #!/bin/bash
 
-rhn_username=$1
-rhn_pass=$2
-rhn_pool=$3
+HOSTNAME=$1
+rhn_username=$2
+rhn_pass=$3
+rhn_pool=$4
 
 
 subscription-manager register --username=${rhn_username} --password=${rhn_pass} --force

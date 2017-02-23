@@ -55,7 +55,7 @@ For applications that need Persitent Volumes you will need to log in as an OpenS
 
 User console of OpenShift is available on the master FQDN that will be constructed based on "Master Dns Name" param, example :
 ```
-http://MASTERDNSNAME.westeurope.cloudapp.azure.com:8443/console/
+https://MASTERDNSNAME.westeurope.cloudapp.azure.com:8443/console/
 ```
 
 GitLab and nexus is available on the Utils FQDN that will be constructed based on "Utils Dns Name" param, example :
@@ -134,8 +134,9 @@ The output of the previous commmand line contains the connection strings :
 
 
 ### Azure logs when applying scripts 
-cat /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.2/CommandExecution.log
-cat /var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.2/extension.log
+
+/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.2/CommandExecution.log
+/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.3.0.2/extension.log
 
 
 
